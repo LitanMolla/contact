@@ -30,7 +30,7 @@ const showContactList = (list) => {
                         class="bg-fuchsia-500 py-1 rounded-md cursor-pointer duration-300 hover:scale-105">Call</button>
                     <button
                         class="bg-blue-500 py-1 rounded-md cursor-pointer duration-300 hover:scale-105">Edit</button>
-                    <button
+                    <button onclick='deleteContact(${contact.id})'
                         class="bg-red-500 py-1 rounded-md cursor-pointer duration-300 hover:scale-105">Delete</button>
                 </div>
             </div>
@@ -42,18 +42,18 @@ const showContactList = (list) => {
 showContactList(contacts)
 
 const addContact = () => {
-    const newContact = {
-        id: contacts.length + 1,
-    }
-    console.log({
-        inputPhone
-    });
-    
+    const number = inputPhone.value;
+    const name = inputName.value;
+    const newContact = { id: contacts.length + 1, name, number }
     contacts.push(newContact)
     showContactList(contacts)
 }
 
-saveBtn.addEventListener('click',addContact)
+saveBtn.addEventListener('click', addContact)
+const deleteContact = (id) => {
+    const index = contacts.findIndex(contact=>contact.id==id)
+    contacts.splice(index,1)
+    showContactList(contacts)
+}
 
 
-console.log(contacts);
