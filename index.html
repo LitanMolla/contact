@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Contacts</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-100 flex min-h-screen flex-col justify-center items-center">
+    <main class="bg-gray-800/50 p-8 border-gray-700 border rounded-xl space-y-3 w-full max-w-md">
+        <h2 class="text-2xl font-semibold text-center uppercase">My Contacts</h2>
+        <div class="flex gap-4">
+            <input id="searchInput" type="text" placeholder="Search name"
+                class="w-full border border-gray-700 rounded-md py-2 px-4 outline-0">
+            <button id="searchBtn"
+                class="bg-gray-100 text-gray-800 py-2 px-4 rounded-md duration-300 hover:bg-gray-300 cursor-pointer ">Search</button>
+        </div>
+        <!-- Contact List -->
+        <div class="">
+            <!-- Contact Item -->
+            <div class="bg-white/10 p-4 rounded-md border border-white/20 text-center space-y-1.5">
+                <p class="uppercase text-xl font-medium">Litan Molla</p>
+                <p class="text-lg">01741232775</p>
+                <div class="grid grid-cols-3 gap-4">
+                    <button
+                        class="bg-fuchsia-500 py-1 rounded-md cursor-pointer duration-300 hover:scale-105">Call</button>
+                    <button
+                        class="bg-blue-500 py-1 rounded-md cursor-pointer duration-300 hover:scale-105">Edit</button>
+                    <button
+                        class="bg-red-500 py-1 rounded-md cursor-pointer duration-300 hover:scale-105">Delete</button>
+                </div>
+            </div>
+        </div>
+        <!-- New Contact -->
+        <button class="bg-green-600 py-2 w-full rounded-md cursor-pointer hover:bg-green-500 duration-300">+ Add
+            Contact</button>
+        <div class="bg-white/10 border border-white/20 p-4 rounded-md space-y-1.5">
+            <input type="text" name="" id="" placeholder="Enter phone number"
+                class="w-full border border-gray-700 rounded-md py-2 px-4 bg-gray-900 outline-0">
+            <input type="text" name="" id="" placeholder="Enter full name"
+                class="w-full border border-gray-700 rounded-md py-2 px-4 bg-gray-900 outline-0">
+            <div class="grid grid-cols-2 gap-4">
+                <button class="bg-red-500 py-1 rounded-md cursor-pointer duration-300 hover:scale-105">Cancel</button>
+                <button class="bg-green-500 py-1 rounded-md cursor-pointer duration-300 hover:scale-105">Save</button>
+            </div>
+        </div>
+    </main>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
