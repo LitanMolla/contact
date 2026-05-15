@@ -15,13 +15,11 @@ const notFound = getElement('notFound')
 const searchBtn = getElement('searchBtn')
 const searchInput = getElement('searchInput')
 
-const contacts = [
-    {
-        id: 1,
-        name: "Rahim",
-        number: "01712345678"
-    },
-];
+const contacts = JSON.parse(localStorage.getItem('contacts')) || []
+const handleLocalStorage = () => {
+    const data = JSON.stringify(contacts)
+    localStorage.setItem('contacts', data)
+}
 const showContactList = (list) => {
     contactList.innerHTML = ''
     list.map((contact) => {
@@ -41,6 +39,7 @@ const showContactList = (list) => {
             </div>
         `
         contactList.appendChild(newContact)
+        handleLocalStorage()
     })
 
 }
@@ -65,6 +64,7 @@ const deleteContact = (id) => {
     const index = contacts.findIndex(contact => contact.id == id)
     contacts.splice(index, 1)
     showContactList(contacts)
+    handleLocalStorage()
 }
 
 const showForm = () => {
@@ -82,7 +82,7 @@ const callFun = (id) => {
 
 const handleSearch = () => {
     const search = searchInput.value.toLowerCase()
-    const filter = contacts.filter((contact)=>contact.name.toLowerCase()==search)
+    const filter = contacts.filter((contact) => contact.name.toLowerCase() == search)
     showContactList(filter)
 }
-searchBtn.addEventListener('click',handleSearch)
+searchBtn.addEventListener('click', handleSearch)
