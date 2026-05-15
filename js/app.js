@@ -5,6 +5,9 @@ const getElement = (id) => {
 }
 
 const contactList = getElement('contactList')
+const inputName = getElement('inputName')
+const inputPhone = getElement('inputPhone')
+const saveBtn = getElement('saveBtn')
 
 const contacts = [
     {
@@ -12,26 +15,6 @@ const contacts = [
         name: "Rahim",
         number: "01712345678"
     },
-    {
-        id: 2,
-        name: "Karim",
-        number: "01898765432"
-    },
-    {
-        id: 3,
-        name: "Hasan",
-        number: "01945678912"
-    },
-    {
-        id: 4,
-        name: "Sakib",
-        number: "01633445566"
-    },
-    {
-        id: 5,
-        name: "Nadim",
-        number: "01577889900"
-    }
 ];
 
 const showContactList = (list) => {
@@ -57,3 +40,20 @@ const showContactList = (list) => {
 
 }
 showContactList(contacts)
+
+const addContact = () => {
+    const newContact = {
+        id: contacts.length + 1,
+    }
+    console.log({
+        inputPhone
+    });
+    
+    contacts.push(newContact)
+    showContactList(contacts)
+}
+
+saveBtn.addEventListener('click',addContact)
+
+
+console.log(contacts);
