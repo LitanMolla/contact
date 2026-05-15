@@ -8,6 +8,8 @@ const contactList = getElement('contactList')
 const inputName = getElement('inputName')
 const inputPhone = getElement('inputPhone')
 const saveBtn = getElement('saveBtn')
+const addContactBtn = getElement('addContactBtn')
+const addContactForm = getElement('addContactForm')
 
 const contacts = [
     {
@@ -45,8 +47,12 @@ const addContact = () => {
     const number = inputPhone.value;
     const name = inputName.value;
     const newContact = { id: contacts.length + 1, name, number }
+    inputName.value='';
+    inputPhone.value='';
     contacts.push(newContact)
     showContactList(contacts)
+    addContactForm.classList.toggle('hidden')
+    addContactBtn.classList.toggle('hidden')
 }
 
 saveBtn.addEventListener('click', addContact)
@@ -56,4 +62,8 @@ const deleteContact = (id) => {
     showContactList(contacts)
 }
 
-
+const showForm = ()=> {
+    addContactForm.classList.toggle('hidden')
+    addContactBtn.classList.toggle('hidden')
+}
+addContactBtn.addEventListener('click',showForm)
