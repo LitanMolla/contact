@@ -3,7 +3,7 @@ const getElement = (id) => {
     const element = document.getElementById(id)
     return element
 }
-
+// all element
 const contactList = getElement('contactList')
 const inputName = getElement('inputName')
 const inputPhone = getElement('inputPhone')
@@ -11,6 +11,9 @@ const saveBtn = getElement('saveBtn')
 const addContactBtn = getElement('addContactBtn')
 const addContactForm = getElement('addContactForm')
 const cancelBTN = getElement('cancelBTN')
+const notFound = getElement('notFound')
+const searchBtn = getElement('searchBtn')
+const searchInput = getElement('searchInput')
 
 const contacts = [
     {
@@ -19,7 +22,6 @@ const contacts = [
         number: "01712345678"
     },
 ];
-
 const showContactList = (list) => {
     contactList.innerHTML = ''
     list.map((contact) => {
@@ -43,7 +45,6 @@ const showContactList = (list) => {
 
 }
 showContactList(contacts)
-
 const addContact = () => {
     const number = inputPhone.value;
     const name = inputName.value;
@@ -74,7 +75,14 @@ addContactBtn.addEventListener('click', showForm)
 cancelBTN.addEventListener('click', showForm)
 
 const callFun = (id) => {
-    const filter = contacts.filter((contact)=>contact.id==id)
+    const filter = contacts.filter((contact) => contact.id == id)
     const contact = filter[0]
     return alert(`Caling ${contact.name} - ${contact.number}`)
 }
+
+const handleSearch = () => {
+    const search = searchInput.value.toLowerCase()
+    const filter = contacts.filter((contact)=>contact.name.toLowerCase()==search)
+    showContactList(filter)
+}
+searchBtn.addEventListener('click',handleSearch)
